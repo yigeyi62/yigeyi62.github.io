@@ -14,7 +14,6 @@
       background-color: #f5f5ff;
       font-family: 'Arial', sans-serif;
       flex-direction: column; /* 使元素上下排列 */
-      padding: 10px; /* 适应屏幕边距 */
     }
 
     .countdown-container {
@@ -40,18 +39,19 @@
     .countdown-container > .countdown-message {
       margin: 0 2vw; /* 设置动态左右间距 */
     }
-
+    
     /* 小屏幕适应 */
-    @media (max-width: 600px) {
+    /* @media (max-width: 600px) {
       .countdown-container {
-        font-size: 12vw; /* 小屏幕时字体更大 */
+        font-size: 12vw; /* 小屏幕时字体更大 *//*
         padding: 12vw 15vw;
       }
 
       .countdown-message {
-        font-size: 5vw; /* 小屏幕时消息字体更大 */
+        font-size: 5vw; /* 小屏幕时消息字体更大 *//*
       }
-    }
+    } */
+
 
   </style>
 </head>
@@ -93,8 +93,8 @@
 
       // 显示到页面
       document.getElementById('countdown').textContent = formattedTime;
-      document.getElementById('left-message').textContent = '还有';
-      document.getElementById('right-message').textContent = '见面！';
+      document.getElementById('left-message').textContent = '♥';
+      document.getElementById('right-message').textContent = '见♥';
     }
 
     // 每秒更新倒计时
