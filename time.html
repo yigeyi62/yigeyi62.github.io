@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>倒计时</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f5f5ff;
+      font-family: 'Arial', sans-serif;
+      flex-direction: column; /* 使元素上下排列 */
+      padding: 10px; /* 适应屏幕边距 */
+    }
+
+    .countdown-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8vw; /* 动态字体大小 */
+      font-weight: bold;
+      color: #b19cd9; /* 淡紫色 */
+      text-align: center;
+      border: 2px solid #b19cd9;
+      border-radius: 20px;
+      padding: 5vw 10vw; /* 动态内边距 */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .countdown-message {
+      font-size: 2.5vw; /* 调整消息字体大小 */
+      font-weight: bold;
+      color: #b19cd9;
+    }
+
+    .countdown-container > .countdown-message {
+      margin: 0 2vw; /* 设置动态左右间距 */
+    }
+
+    /* 小屏幕适应 */
+    @media (max-width: 600px) {
+      .countdown-container {
+        font-size: 12vw; /* 小屏幕时字体更大 */
+        padding: 12vw 15vw;
+      }
+
+      .countdown-message {
+        font-size: 5vw; /* 小屏幕时消息字体更大 */
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="countdown-container">
+    <div id="left-message" class="countdown-message">还有</div>
+    <div id="countdown">Loading...</div>
+    <div id="right-message" class="countdown-message">见面！</div>
+  </div>
+
+  <script>
+    function updateCountdown() {
+      // 当前时间
+      const now = new Date();
+      // 目标时间：1月17日19点
+      const targetDate = new Date(now.getFullYear(), 0, 17, 19, 0, 0); // 0 是 1 月
+
+      // 如果当前时间已经超过目标时间，设为下一年的 1 月 17 日
+      if (now > targetDate) {
+        targetDate.setFullYear(targetDate.getFullYear() + 1);
+      }
+
+      // 计算剩余时间
+      const totalSeconds = Math.floor((targetDate - now) / 1000);
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      // 如果时间已过，显示“已经见面啦！”
+      if (totalSeconds <= 0) {
+        document.getElementById('countdown').textContent = '00:00:00';
+        document.getElementById('left-message').textContent = '已经见面啦！';
+        document.getElementById('right-message').textContent = '';
+        return;
+      }
+
+      // 格式化时间
+      const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+      // 显示到页面
+      document.getElementById('countdown').textContent = formattedTime;
+      document.getElementById('left-message').textContent = '还有';
+      document.getElementById('right-message').textContent = '见面！';
+    }
+
+    // 每秒更新倒计时
+    setInterval(updateCountdown, 1000);
+
+    // 初次调用，避免延迟
+    updateCountdown();
+  </script>
+</body>
+</html>
