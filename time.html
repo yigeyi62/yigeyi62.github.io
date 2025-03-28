@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>倒计时</title>
   <style>
-/*     body {
+    /* body {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -23,11 +23,41 @@
       background: linear-gradient(135deg, #ffffff, #e0f8e0); /* 白色到浅绿渐变 */
       font-family: 'Arial', sans-serif;
     }
-
     #countdown {
       font-size: 3rem;
       font-weight: bold;
-      color: #b19cd9; /* 淡紫色 */
+      color: #4B8B3B;        /* 深绿色字体 */
+      text-align: center;
+      border: 3px solid #4CAF50; /* 深绿边框 */
+      border-radius: 20px;
+      padding: 20px;
+      /*background-color: #ffffff;  /* 白色背景增强对比 */
+      /*box-shadow: 0 4px 15px rgba(72, 160, 72, 0.3);*/ /* 柔和绿色阴影 */
+      box-shadow: 0 4px 15px rgba(72, 160, 72, 0.3), 
+              inset 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .message {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #3A7048;  /* 暗绿文字，柔和耐看 */
+      margin-top: 20px;
+    }
+    .flower {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background-image: url('path-to-calla-lily-image.png'); /* 替换为你的马蹄莲图片路径 */
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.6; /* 轻度透明，增加点缀感 */
+    }
+
+
+    /* #countdown {
+      font-size: 3rem;
+      font-weight: bold;
+      color:#00ff9941;        /* #b19cd9; /* 淡紫色 *//*
       text-align: center;
       border: 2px solid #b19cd9;
       border-radius: 20px;
@@ -40,7 +70,7 @@
       font-weight: bold;
       color: #b19cd9;
       margin-top: 20px;
-    }
+    } */
   </style>
 </head>
 <body>
@@ -58,9 +88,6 @@
       // if (now > targetDate) {
       //   targetDate.setFullYear(targetDate.getFullYear() + 1);
       // }
-      // if (now > targetDate) {
-      //   targetDate.setFullYear(targetDate.getFullYear() + 1);
-      // }
 
       // 计算剩余时间
       const totalSeconds = Math.floor((targetDate - now) / 1000);
@@ -70,8 +97,8 @@
 
       // 如果时间已过，显示“已经见面啦！”
       if (totalSeconds <= 0) {
-        // document.getElementById('countdown').textContent = '00:00:00';
-        document.getElementById('message').textContent = '已经见面啦！';
+        document.getElementById('countdown').textContent = '已经见面啦！';
+        // document.getElementById('message').textContent = '已经见面啦！';
         return;
       }
 
